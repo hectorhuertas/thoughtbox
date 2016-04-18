@@ -115,8 +115,8 @@ RSpec.describe 'Links CRUD', type: :feature do
           fill_in 'link[title]', with: ""
           click_on 'Submit Link'
 
-          expect(current_path).to eq(edit_link_path(link))
           expect(page).to have_text('Invalid data')
+          expect(Link.last.title).to eq(link.title)
         end
       end
 
@@ -131,8 +131,8 @@ RSpec.describe 'Links CRUD', type: :feature do
           fill_in 'link[url]', with: "url"
           click_on 'Submit Link'
 
-          expect(current_path).to eq(edit_link_path(link))
           expect(page).to have_text('Invalid data')
+          expect(Link.last.url).to eq(link.url)
         end
       end
     end
