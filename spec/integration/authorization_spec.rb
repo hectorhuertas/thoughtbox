@@ -25,5 +25,13 @@ RSpec.describe 'Authorization', type: :feature do
         expect(current_path).to eq(signup_path)
       end
     end
+
+    context 'visits links page' do
+      it 'is redirected to login page' do
+        visit links_path
+
+        expect(current_path).to eq(login_path)
+      end
+    end
   end
 end
