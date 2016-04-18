@@ -59,30 +59,30 @@ RSpec.describe 'Links CRUD', type: :feature do
       end
     end
 
-    context 'marks link as read' do
-      it 'updates the link' do
-        link = Link.create(title: 'title', url: 'http://www.google.com')
-        visit links_path
-        click_on 'Mark as Read'
-
-        link.reload
-        expect(link.read).to be(true)
-        expect(page).to have_text('Mark as Unread')
-      end
-    end
-
-    context 'marks link as unread' do
-      it 'updates the link' do
-        link = Link.create(title: 'title', url: 'http://www.google.com', read: true)
-
-        visit links_path
-        click_on 'Mark as Unread'
-
-        link.reload
-        expect(link.read).to be(false)
-        expect(page).to have_text('Mark as Read')
-      end
-    end
+    # context 'marks link as read' do
+    #   it 'updates the link' do
+    #     link = Link.create(title: 'title', url: 'http://www.google.com')
+    #     visit links_path
+    #     click_on 'Mark as Read'
+    #
+    #     link.reload
+    #     expect(link.read).to be(true)
+    #     expect(page).to have_text('Mark as Unread')
+    #   end
+    # end
+    #
+    # context 'marks link as unread' do
+    #   it 'updates the link' do
+    #     link = Link.create(title: 'title', url: 'http://www.google.com', read: true)
+    #
+    #     visit links_path
+    #     click_on 'Mark as Unread'
+    #
+    #     link.reload
+    #     expect(link.read).to be(false)
+    #     expect(page).to have_text('Mark as Read')
+    #   end
+    # end
 
     context 'edits a link' do
       context 'with valid data' do
