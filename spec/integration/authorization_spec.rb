@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Authorization' do
+RSpec.describe 'Authorization', type: :feature do
   context 'guest user' do
     context 'visits root page' do
       it 'is redirected to login page' do
