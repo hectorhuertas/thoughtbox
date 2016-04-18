@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
 
   resources :users, only:[:index, :create]
-  resources :links, only:[:index, :create, :edit, :update]
+  resources :links, only:[:index, :create, :edit, :update] do
+    get 'toggleStatus', to: 'links#toggleStatus'
+  end
 end

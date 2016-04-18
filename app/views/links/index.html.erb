@@ -3,5 +3,20 @@
 <h2>New Link</h2>
 <%= render 'form' %>
 <br>
+<h2>Filters</h2>
+<div id="filters">
+  <form id="search-filter">
+    <input type="text" name="search-filter" placeholder="Search...">
+  </form>
+  Status:
+  <button id="all" type="button">All</button>
+  <button id="read" type="button">Read</button>
+  <button id="unread" type="button">Unread</button>
+  <br>
+  <button id="sort" type="button">Sort</button>
+</div>
+<br>
 <h2>Links</h2>
-<%= render @links if @links%>
+<div id="links">
+  <%= render @links if @links%>
+</div>
