@@ -83,5 +83,58 @@ RSpec.describe 'Links CRUD', type: :feature do
         expect(page).to have_text('Mark as Read')
       end
     end
+
+    context 'edits a link' do
+      context 'with valid data' do
+        it 'updates the link' do
+          old_link = Link.create(title: 'old_link', url: 'http://www.boogle.com')
+          link = Link.new(title: 'new_link', url: 'http://www.google.com')
+          visit links_path
+          click_on 'Edit'
+
+          expect(current_path).to eq(edit_link_path(old_link))
+
+          fill_in 'link[title]', with: link.title
+          fill_in 'link[url]', with: link.url
+          click_on 'Submit Link'
+
+          expect(current_path).to eq(links_path)
+          expect(page).to have_text(link.title)
+          expect(page).to have_text(link.url)
+        end
+      end
+
+      context 'with invalid title' do
+        it 'shows an error' do
+          link = Link.create(title: 'link', url: 'http://www.boogle.com')
+          visit links_path
+          click_on 'Edit'
+
+          expect(current_path).to eq(edit_link_path(link))
+
+          fill_in 'link[title]', with: ""
+          click_on 'Submit Link'
+
+          expect(page).to have_text('Invalid data')
+          expect(Link.last.title).to eq(link.title)
+        end
+      end
+
+      context 'with invalid url' do
+        it 'shows an error' do
+          link = Link.create(title: 'link', url: 'http://www.boogle.com')
+          visit links_path
+          click_on 'Edit'
+
+          expect(current_path).to eq(edit_link_path(link))
+
+          fill_in 'link[url]', with: "url"
+          click_on 'Submit Link'
+
+          expect(page).to have_text('Invalid data')
+          expect(Link.last.url).to eq(link.url)
+        end
+      end
+    end
   end
 end
