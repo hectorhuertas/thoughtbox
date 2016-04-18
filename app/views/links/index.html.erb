@@ -1,2 +1,7 @@
 <h3>Welcome, <%= current_user.email %> - <%= link_to 'Log Out', logout_path %></h3>
+<br>
+<h2>New Link</h2>
+<%= render 'form' %>
+<br>
 <h2>Links</h2>
+<%= render @links if @links%>
