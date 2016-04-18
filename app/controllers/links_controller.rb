@@ -10,13 +10,22 @@ class LinksController < ApplicationController
       redirect_to links_path
     else
       flash[:danger] = 'Invalid Link'
-      render :index
+      redirect_to links_path
     end
   end
 
   def update
-    Link.update(params[:id], read: params[:read] ==='true' ? true : false)
-    redirect_to links_path
+    if params[:read]
+      Link.update(params[:id], read: params[:read] ==='true' ? true : false)
+      redirect_to links_path
+    else
+      Link.update(params[:id], link_params)
+      redirect_to links_path
+    end
+  end
+
+  def edit
+    @link = Link.find(params[:id])
   end
 
   private

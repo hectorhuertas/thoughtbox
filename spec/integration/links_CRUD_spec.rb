@@ -98,6 +98,7 @@ RSpec.describe 'Links CRUD', type: :feature do
           fill_in 'link[url]', with: link.url
           click_on 'Submit Link'
 
+          expect(current_path).to eq(links_path)
           expect(page).to have_text(link.title)
           expect(page).to have_text(link.url)
         end
