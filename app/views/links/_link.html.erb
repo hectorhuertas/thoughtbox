@@ -1,11 +1,11 @@
 <li>
   <% if link.read %>
-    <%= link.title %>:
+    <%= content_tag :span, link.title + ':' %>
     <%= link_to link.url, link.url , style: "text-decoration:line-through"%>
     <%= link_to 'Edit', edit_link_path(link) %>
     <%= link_to 'Mark as Unread', link_path(link, read: false), method: :patch %>
   <% else %>
-    <%= link.title %>:
+  <%= content_tag :span, link.title + ':' %>
     <%= link_to link.url, link.url%>
     <%= link_to 'Edit', edit_link_path(link) %>
     <%= link_to 'Mark as Read', link_path(link, read: true), method: :patch %>
