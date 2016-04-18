@@ -26,6 +26,37 @@ RSpec.describe 'Links CRUD', type: :feature do
           expect(page).to have_text(old_link.url)
         end
       end
+
+      context 'with invalid title' do
+        it 'shows an error' do
+          link = Link.new(title: '', url: 'http://www.google.com')
+          visit links_path
+
+          fill_in 'link[title]', with: link.title
+          fill_in 'link[url]', with: link.url
+          click_on 'Submit Link'
+
+          expect(Link.count).to eq(0)
+          expect(page).to_not have_text(link.url)
+          expect(page).to have_text('Invalid Title')
+        end
+      end
+
+      context 'with invalid url' do
+        it 'shows an error' do
+          link = Link.new(title: 'title', url: 'url')
+          visit links_path
+
+          fill_in 'link[title]', with: link.title
+          fill_in 'link[url]', with: link.url
+          click_on 'Submit Link'
+
+          expect(Link.count).to eq(0)
+          expect(page).to_not have_text(link.title)
+          expect(page).to_not have_text(link.url)
+          expect(page).to have_text('Invalid Url')
+        end
+      end
     end
   end
 end
