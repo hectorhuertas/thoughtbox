@@ -1,13 +1,13 @@
-<li>
+<li data-id="<%= link.id%>">
   <% if link.read %>
     <%= content_tag :span, link.title + ':' %>
-    <%= link_to link.url, link.url , style: "text-decoration:line-through"%>
+    <%= link_to link.url, link.url , class: 'crossed link'%>
     <%= link_to 'Edit', edit_link_path(link) %>
-    <%= link_to 'Mark as Unread', link_path(link, read: false), method: :patch %>
+    <%= link_to 'Mark as Unread', link_path(link, read: false), method: :patch, class: 'reader' %>
   <% else %>
   <%= content_tag :span, link.title + ':' %>
-    <%= link_to link.url, link.url%>
+    <%= link_to link.url, link.url, class: 'link'%>
     <%= link_to 'Edit', edit_link_path(link) %>
-    <%= link_to 'Mark as Read', link_path(link, read: true), method: :patch %>
+    <%= link_to 'Mark as Read', link_path(link, read: true), method: :patch, class: 'reader' %>
   <% end %>
 </li>

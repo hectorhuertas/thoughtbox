@@ -34,6 +34,12 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
   end
 
+  def toggleStatus
+    @link = Link.find(params[:link_id])
+    @link.update(read: !@link.read)
+    render json: {msg: 'ok'}
+  end
+
   private
     def link_params
       params.require(:link).permit(:title, :url)
