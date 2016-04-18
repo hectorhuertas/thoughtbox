@@ -3,5 +3,14 @@
 <h2>New Link</h2>
 <%= render 'form' %>
 <br>
+<h2>Filters</h2>
+<div class="">
+  <form id="search-filter">
+    <input type="text" name="search-filter" placeholder="Search...">
+  </form>
+</div>
+<br>
 <h2>Links</h2>
-<%= render @links if @links%>
+<div id="links">
+  <%= render @links if @links%>
+</div>
