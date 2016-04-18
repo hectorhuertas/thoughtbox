@@ -13,7 +13,7 @@ RSpec.describe 'Users CRUD', type: :feature do
         click_on 'Register'
 
         expect(User.count).to eq(1)
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq(links_path)
         expect(page).to have_text(user.email)
       end
     end

@@ -9,5 +9,21 @@ RSpec.describe 'Authorization', type: :feature do
         expect(current_path).to eq(login_path)
       end
     end
+
+    context 'visits login page' do
+      it 'stays there' do
+        visit login_path
+
+        expect(current_path).to eq(login_path)
+      end
+    end
+
+    context 'visits signup page' do
+      it 'stays there' do
+        visit signup_path
+
+        expect(current_path).to eq(signup_path)
+      end
+    end
   end
 end
