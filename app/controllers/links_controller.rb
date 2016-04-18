@@ -14,6 +14,11 @@ class LinksController < ApplicationController
     end
   end
 
+  def update
+    Link.update(params[:id], read: params[:read] ==='true' ? true : false)
+    redirect_to links_path
+  end
+
   private
     def link_params
       params.require(:link).permit(:title, :url)

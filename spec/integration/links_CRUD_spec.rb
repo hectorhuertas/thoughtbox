@@ -61,8 +61,7 @@ RSpec.describe 'Links CRUD', type: :feature do
 
     context 'marks link as read' do
       it 'updates the link' do
-        link = Link.create(title: 'title', url: 'url')
-
+        link = Link.create(title: 'title', url: 'http://www.google.com')
         visit links_path
         click_on 'Mark as Read'
 
@@ -74,7 +73,7 @@ RSpec.describe 'Links CRUD', type: :feature do
 
     context 'marks link as unread' do
       it 'updates the link' do
-        link = Link.create(title: 'title', url: 'url', read: true)
+        link = Link.create(title: 'title', url: 'http://www.google.com', read: true)
 
         visit links_path
         click_on 'Mark as Unread'
