@@ -38,7 +38,7 @@ RSpec.describe 'Links CRUD', type: :feature do
 
           expect(Link.count).to eq(0)
           expect(page).to_not have_text(link.url)
-          expect(page).to have_text('Invalid Title')
+          expect(page).to have_text('Invalid Link')
         end
       end
 
@@ -54,7 +54,7 @@ RSpec.describe 'Links CRUD', type: :feature do
           expect(Link.count).to eq(0)
           expect(page).to_not have_text(link.title)
           expect(page).to_not have_text(link.url)
-          expect(page).to have_text('Invalid Url')
+          expect(page).to have_text('Invalid Link')
         end
       end
     end

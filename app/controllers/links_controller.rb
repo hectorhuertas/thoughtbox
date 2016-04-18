@@ -9,6 +9,7 @@ class LinksController < ApplicationController
     if @link.save
       redirect_to links_path
     else
+      flash[:danger] = 'Invalid Link'
       render :index
     end
   end
